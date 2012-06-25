@@ -1,0 +1,4 @@
+#login { float: left; text-align: center; }
+#invited { float: left; position: relative; background: transparent url(../../img/invited.png) no-repeat 0 0; width: 150px; height: 116px; }
+#invited span { position: absolute; bottom: 0; right: 2%; font-size: 15px; font-style: italic; text-align: center; font-weight: bold; color: #ed8b0c; font-family: georgia, 'trebuchet ms', 'times new roman'; }
+#login-content { width: 580px; margin: 0 auto; }

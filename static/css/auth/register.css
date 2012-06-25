@@ -1,0 +1,5 @@
+#expires { color: red; font-size: 20px; }
+#invited-name, #invited-username, #invited-by { font-style: italic; color: #383838; }
+.infodiv { line-height: 20pt; }
+
+#signup-form { margin: 0 auto; }
