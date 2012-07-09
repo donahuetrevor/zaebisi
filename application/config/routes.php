@@ -45,6 +45,11 @@ $route['404_override'] = '';
 $route['auth/(:any)'] = 'auth/$1';
 $route['movies/(:any)'] = 'movies/$1';
 
+$route['movie-reviews/create'] = 'movieReviews/create/$1';
+$route['movie-reviews/edit/(\d+)'] = 'movieReviews/edit/$1';
+$route['movie-reviews/delete/(\d+)'] = 'movieReviews/delete/$1';
+$route['movie-reviews/lists'] = 'movieReviews/lists';
+
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';
 //$route['(:any)'] = 'movies/view/$1';
