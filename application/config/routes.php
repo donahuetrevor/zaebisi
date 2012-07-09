@@ -45,6 +45,9 @@ $route['404_override'] = '';
 $route['auth/(:any)'] = 'auth/$1';
 $route['movies/(:any)'] = 'movies/$1';
 
+$route['movie-titles/(\d+)'] = 'movieTitles/view/$1';
+$route['movie-titles/assign/(\d+)'] = 'movieTitles/assign/$1';
+
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';
 //$route['(:any)'] = 'movies/view/$1';

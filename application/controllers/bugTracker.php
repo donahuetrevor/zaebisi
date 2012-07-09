@@ -4,7 +4,11 @@ class BugTracker extends CI_Controller {
 
     public function create_issue()
     {
+        /**
+         * view load
+         */
         $this->load->view('bugTracker/issues');
+
         $issue = R::dispense("issues");
         if (isset($_POST['issue_name']))
         {

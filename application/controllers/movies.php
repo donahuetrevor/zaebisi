@@ -2,23 +2,10 @@
 
 class Movies extends CI_Controller {
 
-    public function view($page = 'auto-list') {
+    public function index($page = 'auto-list') {
 
-        if ( ! file_exists('application/views/movies/'.$page.'.php'))
-        {
-            // Whoops, we don't have a page for that!
-            show_404();
-        }
+        $list = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
 
-        $data['title'] = 'List of movies';
-        $data['keywords'] = '';
-        $data['description'] = 'test description';
-        $data['include'] = 'movies/auto-list.php';
-
-        $needles = R::findAll('movies', ' ORDER BY datetime_added LIMIT 10 ');
-
-        print_r($needles);
-        exit();
 
 //        $now = date('Y-m-d H:i:s', time());
 //
@@ -39,8 +26,47 @@ class Movies extends CI_Controller {
 //
 //        $movieTitleId = R::store($movieTitle);
 
-        
-
-        $this->load->view('page', $data);
     }
+
+    public function create() {
+
+        if (!empty($_POST)) {
+            $now = date('Y-m-d H:i:s', time());
+
+            $movieObj = R::dispense('movies');
+            $movieObj->user_id_added = 1;
+            $movieObj->datetime_added = $now;
+            $movieObj->approved = true;
+            $movieObj->visible = true;
+            $movieId = R::store($movieObj);
+
+            $movieTitleObj = R::dispense('movie_titles');
+            $movieTitleObj->user_id_added = 1;
+            $movieTitleObj->movie_id_assigned = $movieId;
+            $movieTitleObj->title = $_POST['movie-title'];
+            $movieTitleObj->datetime_added = $now;
+            $movieTitleObj->approved = true;
+            $movieTitleObj->visible = true;
+            $movieTitleId = R::store($movieTitleObj);
+
+//            $movieTitleArray = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
+
+            /**
+             * @todo
+             * $dkghfdkhg->addErrorMsg('lkdsfjks');
+             * $->redirect('list');
+             */
+            echo 'movie with id ' . $movieId . ' created';
+        }
+
+
+        /**
+         * view load
+         */
+        $this->load->view('movies/create');
+
+
+
+    }
+
 }
