@@ -4,9 +4,6 @@ class Movies extends CI_Controller {
 
     public function view($page = 'auto-list') {
 
-        /**
-         * istrati test
-         */
         if ( ! file_exists('application/views/movies/'.$page.'.php'))
         {
             // Whoops, we don't have a page for that!
