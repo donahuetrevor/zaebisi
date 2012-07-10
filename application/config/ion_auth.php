@@ -32,7 +32,7 @@
 	/**
 	 * Admin Email, admin@example.com
 	 */
-	$config['admin_email']		   = "admin@example.com";
+	$config['admin_email']		   = "donahue.trevor@gmail.com";
 	
 	/**
 	 * Default group, use name

@@ -45,9 +45,11 @@ class Auth extends Controller {
     //log the user in
     function login()
     {
-        
 
-        $this->data['title'] = "Login";
+	    $locale = 'ro_RO';
+	    $this->gettext_language->load_gettext($locale);
+
+	    $this->data['title'] = "Login";
 
         if ($this->ion_auth->logged_in()) {
             //already logged in so no need to access this page
@@ -55,8 +57,8 @@ class Auth extends Controller {
         }
 
         //validate form input
-        $this->form_validation->set_rules('username', _('Username')/*, 'required|valid_email'*/);
-        $this->form_validation->set_rules('pass', _('Password')/*, 'required'*/);
+        $this->form_validation->set_rules('username', _('username')/*, 'required|valid_email'*/);
+        $this->form_validation->set_rules('pass', _('password')/*, 'required'*/);
 
         if ($this->form_validation->run() == true) {
             //check to see if the user is logging in
@@ -97,7 +99,7 @@ class Auth extends Controller {
             );
 
 
-//            $this->gettext_language->load_gettext('ru_RU');
+//            $this->gettext_language->load_gettext('ro_RO');
 
             $this->data['CSS_FILES'] = array(0=>array('controller_name' => 'auth', 'action_name' => 'login'));
 

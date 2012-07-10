@@ -434,8 +434,8 @@ class CI_Loader {
      */
     public function view_page($page_view, $data = array()) {
 
-        $data['keywords'] = (@$data['keywords'] ?: 'test keywords');
-        $data['description'] = (@$data['description'] ?: 'test description');
+//        $data['keywords'] = (@$data['keywords'] ?: 'test keywords');
+//        $data['description'] = (@$data['description'] ?: 'test description');
 
         $data['include'] = $page_view;
         return $this->view('page', $data);

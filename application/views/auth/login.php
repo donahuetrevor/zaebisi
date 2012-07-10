@@ -14,7 +14,7 @@
         <div class="clear"></div>
     </form>
     <a href="<?=base_url('invited/')?>" id="invited">
-        <span><?=_('Invited')?>!</span>
+        <span><?=_('invited')?>!</span>
     </a>
     <div class="clear"></div>
 </div>

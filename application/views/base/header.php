@@ -3,8 +3,8 @@
 <head>
 <title><?=$title?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="keywords" content="<?=$keywords?>" />
-<meta name="description" content="<?=$description?>" />
+<meta name="keywords" content="<?=@$keywords?>" />
+<meta name="description" content="<?=@$description?>" />
 <meta name="robots" content="all"/>
 <link rel="stylesheet" href="<?=STATICPATH?>css/style.css" type="text/css" />
 <link rel="stylesheet" href="<?=STATICPATH?>css/jquery-ui-1.8.1.custom.css" type="text/css" />

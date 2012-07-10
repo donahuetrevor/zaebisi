@@ -2,10 +2,15 @@
 
 class Movies extends CI_Controller {
 
-    public function index($page = 'auto-list') {
+	public function index($page = 'auto-list') {
 
-        $list = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
+//		$list = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
 
+
+		$this->gettext_language->load_gettext('ro_RO');
+
+		echo _('username');
+		exit();
 
 //        $now = date('Y-m-d H:i:s', time());
 //
@@ -28,45 +33,47 @@ class Movies extends CI_Controller {
 
     }
 
-    public function create() {
+	public function create() {
 
-        if (!empty($_POST)) {
-            $now = date('Y-m-d H:i:s', time());
+		if (!empty($_POST)) {
+			$now = date('Y-m-d H:i:s', time());
 
-            $movieObj = R::dispense('movies');
-            $movieObj->user_id_added = 1;
-            $movieObj->datetime_added = $now;
-            $movieObj->approved = true;
-            $movieObj->visible = true;
-            $movieId = R::store($movieObj);
+			$movieObj = R::dispense('movies');
+			$movieObj->user_id_added = 1;
+			$movieObj->datetime_added = $now;
+			$movieObj->approved = true;
+			$movieObj->visible = true;
+			$movieId = R::store($movieObj);
 
-            $movieTitleObj = R::dispense('movie_titles');
-            $movieTitleObj->user_id_added = 1;
-            $movieTitleObj->movie_id_assigned = $movieId;
-            $movieTitleObj->title = $_POST['movie-title'];
-            $movieTitleObj->datetime_added = $now;
-            $movieTitleObj->approved = true;
-            $movieTitleObj->visible = true;
-            $movieTitleId = R::store($movieTitleObj);
+			$movieTitleObj = R::dispense('movie_titles');
+			$movieTitleObj->user_id_added = 1;
+			$movieTitleObj->movie_id_assigned = $movieId;
+			$movieTitleObj->title = $_POST['movie-title'];
+			$movieTitleObj->datetime_added = $now;
+			$movieTitleObj->approved = true;
+			$movieTitleObj->visible = true;
+			$movieTitleId = R::store($movieTitleObj);
 
-//            $movieTitleArray = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
+			//            $movieTitleArray = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
 
-            /**
-             * @todo
-             * $dkghfdkhg->addErrorMsg('lkdsfjks');
-             * $->redirect('list');
-             */
-            echo 'movie with id ' . $movieId . ' created';
-        }
+			/**
+			 * @todo
+			 * $dkghfdkhg->addErrorMsg('lkdsfjks');
+			 * $->redirect('list');
+			 */
+			echo 'movie with id ' . $movieId . ' created';
+		}
 
-
-        /**
-         * view load
-         */
-        $this->load->view('movies/create');
+//		$this->data['keywords'] = 'create, movie, form';
+//		$this->data['description'] = '';
 
 
+		/**
+		 * view load
+		 */
+		$this->load->view_page('movies/create', $this->data);
 
-    }
+
+	}
 
 }
