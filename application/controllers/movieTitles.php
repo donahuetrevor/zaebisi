@@ -6,7 +6,7 @@ class MovieTitles extends CI_Controller {
 //
 //    }
 
-    public function list($sort='dateadded', $order='desc') {
+    public function lists($sort='dateadded', $order='desc') {
 
         $perPage = 5;
 
@@ -21,7 +21,7 @@ class MovieTitles extends CI_Controller {
         $movieTitleList = R::find('movie_titles',
                                   ' 1 ORDER BY :sortorder LIMIT :perPage ',
                                   array(':sortorder' => $sort,
-                                        ':perPage' => $perPage);
+                                        ':perPage' => $perPage));
 
 
     }

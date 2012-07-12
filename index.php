@@ -1,6 +1,6 @@
 <?php
 
-define('STATICPATH', 'http://locale.zaebisi.com/static/');
+define('STATICPATH', 'http://localhost:8080/zaebisi.com/zaebisi/static/');
 
 /*
  *---------------------------------------------------------------

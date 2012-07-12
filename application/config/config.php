@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://locale.zaebisi.com/';
+$config['base_url']	= 'http://localhost:8080/zaebisi.com/zaebisi/index.php/';
 
 /*
 |--------------------------------------------------------------------------

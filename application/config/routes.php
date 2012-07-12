@@ -55,7 +55,11 @@ $route['movie-reviews/lists'] = 'movieReviews/lists';
 $route['movie-titles/(\d+)'] = 'movieTitles/view/$1';
 $route['movie-titles/assign/(\d+)'] = 'movieTitles/assign/$1';
 
-
+$route['bug-tracker-issue/create']      = 'bugTrackerIssue/create/$1';
+$route['bug-tracker-issue/edit/(\d+)']  = 'bugTrackerIssue/edit/$1';
+$route['bug-tracker-issue/view/(\d+)']  = 'bugTrackerIssue/view/$1';
+$route['bug-tracker-issue/delete/(\d+)']  = 'bugTrackerIssue/delete/$1';
+$route['bug-tracker-issue/lists']  = 'bugTrackerIssue/lists/';
 
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';

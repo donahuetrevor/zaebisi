@@ -30,6 +30,7 @@ class MovieReviews extends CI_Controller {
     public  function edit($id){
 
         $movieRiew = R::load("moviereviews",$id);
+
         if(!$movieRiew->id){
             /**
              * @todo add redirect functionality
