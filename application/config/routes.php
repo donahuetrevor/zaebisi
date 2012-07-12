@@ -59,7 +59,14 @@ $route['bug-tracker-issue/create']      = 'bugTrackerIssue/create/$1';
 $route['bug-tracker-issue/edit/(\d+)']  = 'bugTrackerIssue/edit/$1';
 $route['bug-tracker-issue/view/(\d+)']  = 'bugTrackerIssue/view/$1';
 $route['bug-tracker-issue/delete/(\d+)']  = 'bugTrackerIssue/delete/$1';
-$route['bug-tracker-issue/lists']  = 'bugTrackerIssue/lists/';
+$route['bug-tracker-issue/list']  = 'bugTrackerIssue/list_action/';
+
+$route['bug-tracker-issue-comment/create']      = 'BugTrackerIssueComments/create/$1';
+$route['bug-tracker-issue-comment/edit/(\d+)']  = 'BugTrackerIssueComments/edit/$1';
+$route['bug-tracker-issue-comment/view/(\d+)']  = 'BugTrackerIssueComments/view/$1';
+$route['bug-tracker-issue-comment/delete/(\d+)']  = 'BugTrackerIssueComments/delete/$1';
+$route['bug-tracker-issue-comment/list']  = 'BugTrackerIssueComments/list_action/';
+
 
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';

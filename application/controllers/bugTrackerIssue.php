@@ -8,13 +8,14 @@ class BugTrackerIssue extends CI_Controller {
 
     public function create()
     {
-
-
         if (!empty($_POST))
         {
             $now = date('Y-m-d H:i:s', time());
 
             $issueObj = R::dispense("issues");
+            /*
+             * @todo for later (user login)
+             */
             $issueObj->user_id_added = 2;
             $issueObj->name = $_POST['issue_name'];
             $issueObj->datetime_added = $now;
@@ -31,7 +32,7 @@ class BugTrackerIssue extends CI_Controller {
         /**
         * view load
         */
-        $this->load->view('bugTracker/issues/create');
+        $this->load->view_page('bugTracker/issues/create');
 
     }
     public function edit($id)
@@ -62,7 +63,7 @@ class BugTrackerIssue extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view('bugTracker/issues/edit',$data);
+        $this->load->view_page('bugTracker/issues/edit',$data);
 
 
     }
@@ -76,7 +77,7 @@ class BugTrackerIssue extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view('bugTracker/issues/view', $data);
+        $this->load->view_page('bugTracker/issues/view', $data);
 
     }
 
@@ -101,10 +102,10 @@ class BugTrackerIssue extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view('bugTracker/issues/delete',$data);
+        $this->load->view_page('bugTracker/issues/delete',$data);
     }
 
-    public function lists($sort='dateadded', $order='desc')
+    public function list_action($sort='dateadded', $order='desc')
     {
         $issueList = R::find('issues');
 
@@ -124,7 +125,7 @@ class BugTrackerIssue extends CI_Controller {
 
         $data['issueList'] = $issueList;
 
-        $this->load->view('bugTracker/issues/lists',$data);
+        $this->load->view_page('bugTracker/issues/list',$data);
 
     }
 }

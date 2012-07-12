@@ -193,6 +193,11 @@ if (defined('ENVIRONMENT'))
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+    define('APLICATIONPATH', FCPATH.'application\\');
+
+    define('VIEWPATH', APLICATIONPATH.'views\\');
+
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
