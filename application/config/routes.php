@@ -42,30 +42,57 @@ $route['404_override'] = '';
 
 */
 
+/**
+ * default
+ */
 $route['default_controller'] = 'home/index';
 
 $route['auth/(:any)'] = 'auth/$1';
+
+/**
+ * Movies
+ */
 $route['movies/(:any)'] = 'movies/$1';
 
-$route['movie-reviews/create'] = 'movieReviews/create/$1';
-$route['movie-reviews/edit/(\d+)'] = 'movieReviews/edit/$1';
-$route['movie-reviews/delete/(\d+)'] = 'movieReviews/delete/$1';
-$route['movie-reviews/lists'] = 'movieReviews/lists';
+/**
+ * Movie reviews
+ */
+$route['movie-reviews/create'] = 'movie_reviews/create';
+$route['movie-reviews/edit/(\d+)'] = 'movie_reviews/edit/$1';
+$route['movie-reviews/delete/(\d+)'] = 'movie_reviews/delete/$1';
+$route['movie-reviews/lists'] = 'movie_reviews/list_action';
 
-$route['movie-titles/(\d+)'] = 'movieTitles/view/$1';
-$route['movie-titles/assign/(\d+)'] = 'movieTitles/assign/$1';
+/**
+ * Movie titles
+ */
+$route['movie-titles/(\d+)'] = 'movie_titles/view/$1';
 
-$route['bug-tracker-issues/create']      = 'bugTrackerIssue/create/$1';
-$route['bug-tracker-issues/edit/(\d+)']  = 'bugTrackerIssue/edit/$1';
-$route['bug-tracker-issues/view/(\d+)']  = 'bugTrackerIssue/view/$1';
-$route['bug-tracker-issues/delete/(\d+)']  = 'bugTrackerIssue/delete/$1';
-$route['bug-tracker-issues/list']  = 'bugTrackerIssue/list_action/';
+/**
+ * @todo find something shorter
+ */
+$route['movie-titles/([a-z]+)/([a-z]+)'] = 'movie_titles/list_action/$1/$2';
+$route['movie-titles/([a-z]+)'] = 'movie_titles/list_action/$1';
+$route['movie-titles'] = 'movie_titles/list_action';
 
-$route['bug-tracker-issue-comments/create']      = 'bug_tracker_issue_comments/create/$1';
+$route['movie-titles/assign/(\d+)'] = 'movie_titles/assign/$1';
+
+/**
+ * Bug Tracker issues
+ */
+$route['bug-tracker-issues/create']      = 'bug_tracker_issues/create';
+$route['bug-tracker-issues/edit/(\d+)']  = 'bug_tracker_issues/edit/$1';
+$route['bug-tracker-issues/view/(\d+)']  = 'bug_tracker_issues/view/$1';
+$route['bug-tracker-issues/delete/(\d+)']  = 'bug_tracker_issues/delete/$1';
+$route['bug-tracker-issues/list']  = 'bug_tracker_issues/list_action';
+
+/**
+ * Bug Tracker issue comments
+ */
+$route['bug-tracker-issue-comments/create']      = 'bug_tracker_issue_comments/create';
 $route['bug-tracker-issue-comments/edit/(\d+)']  = 'bug_tracker_issue_comments/edit/$1';
 $route['bug-tracker-issue-comments/view/(\d+)']  = 'bug_tracker_issue_comments/view/$1';
 $route['bug-tracker-issue-comments/delete/(\d+)']  = 'bug_tracker_issue_comments/delete/$1';
-$route['bug-tracker-issue-comments/list']  = 'bug_tracker_issue_comments/list_action/';
+$route['bug-tracker-issue-comments/list']  = 'bug_tracker_issue_comments/list_action';
 
 
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';

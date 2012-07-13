@@ -1,12 +1,12 @@
 <?php
 
-class MovieTitles extends CI_Controller {
+class Movie_Titles extends CI_Controller {
 
 //    public function index($page = 'auto-list') {
 //
 //    }
 
-    public function lists($sort='dateadded', $order='desc') {
+    public function list_action($sort='dateadded', $order='desc') {
 
         $perPage = 5;
 
@@ -23,6 +23,7 @@ class MovieTitles extends CI_Controller {
                                   array(':sortorder' => $sort,
                                         ':perPage' => $perPage));
 
+	    $this->load->view_page('movies/titles/list');
 
     }
 
@@ -51,7 +52,7 @@ class MovieTitles extends CI_Controller {
         /**
          * load view
          */
-        $this->load->view('movies/titles/view');
+        $this->load->view_page('movies/titles/view');
     }
 
 }
