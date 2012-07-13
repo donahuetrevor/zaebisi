@@ -32,7 +32,7 @@ class Bug_Tracker_Issues extends CI_Controller {
         /**
         * view load
         */
-        $this->load->view_page('bugTracker/issues/create');
+        $this->load->view_page('bug_tracker/issues/create');
 
     }
     public function edit($id)
@@ -63,7 +63,7 @@ class Bug_Tracker_Issues extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/issues/edit',$data);
+        $this->load->view_page('bug_tracker/issues/edit',$data);
 
 
     }
@@ -77,8 +77,7 @@ class Bug_Tracker_Issues extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/issues/view', $data);
-
+        $this->load->view_page('bug_tracker/issues/view', $data);
     }
 
     public function delete($id)
@@ -102,7 +101,7 @@ class Bug_Tracker_Issues extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/issues/delete',$data);
+        $this->load->view_page('bug_tracker/issues/delete',$data);
     }
 
     public function list_action($sort='dateadded', $order='desc')
@@ -125,7 +124,7 @@ class Bug_Tracker_Issues extends CI_Controller {
 
         $data['issueList'] = $issueList;
 
-        $this->load->view_page('bugTracker/issues/list',$data);
+        $this->load->view_page('bug_tracker/issues/list',$data);
 
     }
 }

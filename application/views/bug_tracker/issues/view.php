@@ -5,9 +5,7 @@
 </div>
 
 <div class="comments">
-    <?php
-
-    include(VIEWPATH.'bugTracker\comments\list.php'); ?>
+    <?php include(VIEWPATH.'bug_tracker\comments\list.php'); ?>
     <?php //include('../comments/create.php'); ?>
 </div>
 

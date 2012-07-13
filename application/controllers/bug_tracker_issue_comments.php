@@ -34,7 +34,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/create');
+        $this->load->view_page('bug_tracker/comments/create');
 
     }
 
@@ -66,7 +66,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/edit',$data);
+        $this->load->view_page('bug_tracker/comments/edit',$data);
 
 
     }
@@ -80,7 +80,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/view', $data);
+        $this->load->view_page('bug_tracker/comments/view', $data);
 
     }
 
@@ -105,7 +105,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/delete',$data);
+        $this->load->view_page('bug_tracker/comments/delete',$data);
     }
 
     public function list_action($sort='dateadded', $order='desc')
@@ -128,7 +128,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
 
         $data['commentsList'] = $ccommentsList;
 
-        $this->load->view_page('bugTracker/comments/list',$data);
+        $this->load->view_page('bug_tracker/comments/list',$data);
 
     }
 

@@ -3,8 +3,8 @@
     <div id="top-wrap">
         <ul id="topnav">
             <!--{if $smarty.session.admin} -->
-                <li><a href="<?=base_url()?>"><?=ucfirst(_('home'))?></a></li>
-                <li><a href="<?=base_url('invites/')?>"><?=ucfirst(_('invites'))?></a></li>
+                <li><a href="<?=site_url()?>"><?=ucfirst(_('home'))?></a></li>
+                <li><a href="<?=site_url('invites/')?>"><?=ucfirst(_('invites'))?></a></li>
             <!--{/if}-->
         </ul>
         <ul id="top-rghtnav">
@@ -37,27 +37,27 @@
 	<ul class="main">
 		<!--{if $smarty.session.admin && $smarty.session.group->id <= 2}-->
 <!--		<li><a href="#">--><?//=ucfirst(_('dashboard'))?><!--</a></li>-->
-<!--		<li><a href="--><?//=base_url('documents/')?><!--">--><?//=ucfirst(ngettext('document', 'documents', 10))?><!--</a></li>-->
-<!--		<li><a href="--><?//=base_url('users/')?><!--">--><?//=ucfirst(ngettext('user', 'users', 10))?><!--</a></li>-->
+<!--		<li><a href="--><?//=site_url('documents/')?><!--">--><?//=ucfirst(ngettext('document', 'documents', 10))?><!--</a></li>-->
+<!--		<li><a href="--><?//=site_url('users/')?><!--">--><?//=ucfirst(ngettext('user', 'users', 10))?><!--</a></li>-->
 <!--		<li><a href="#">--><?//=ucfirst(ngettext('template', 'templates', 10))?><!--</a></li>-->
-<!--		<li><a href="--><?//=base_url('languages/')?><!--">--><?//=ucfirst(ngettext('language', 'languages', 10))?><!--</a></li>-->
+<!--		<li><a href="--><?//=site_url('languages/')?><!--">--><?//=ucfirst(ngettext('language', 'languages', 10))?><!--</a></li>-->
 <!--		<li>-->
-<!--			<a href="--><?//=base_url('modules/')?><!--">--><?//=ucfirst(ngettext('module', 'modules', 10))?><!--</a>-->
+<!--			<a href="--><?//=site_url('modules/')?><!--">--><?//=ucfirst(ngettext('module', 'modules', 10))?><!--</a>-->
 <!--			<ul>-->
-<!--				<li><a href="--><?//=base_url('movies/')?><!--">--><?//=ucfirst(ngettext('movie', 'movies', 10))?><!--</a></li>-->
-<!--				<li><a href="--><?//=base_url('games/')?><!--">--><?//=ucfirst(ngettext('game', 'games', 10))?><!--</a></li>-->
+<!--				<li><a href="--><?//=site_url('movies/')?><!--">--><?//=ucfirst(ngettext('movie', 'movies', 10))?><!--</a></li>-->
+<!--				<li><a href="--><?//=site_url('games/')?><!--">--><?//=ucfirst(ngettext('game', 'games', 10))?><!--</a></li>-->
 <!--			</ul>-->
 <!--		</li>-->
-<!--		<li><a href="--><?//=base_url('admin-forums/')?><!--">--><?//=ucfirst(ngettext('admin forum', 'admin forums', 10))?><!--</a></li>-->
+<!--		<li><a href="--><?//=site_url('admin-forums/')?><!--">--><?//=ucfirst(ngettext('admin forum', 'admin forums', 10))?><!--</a></li>-->
 
 		<li class="add-menu">
 			<a href="#" onclick="return false;"><?=ucfirst(ngettext('options', 'options', 10))?></a>
 			<ul>
-				<li><a href="<?=base_url('menus/')?>"><?=ucfirst(ngettext('edit menu', 'edit menus', 10))?></a></li>
+				<li><a href="<?=site_url('menus/')?>"><?=ucfirst(ngettext('edit menu', 'edit menus', 10))?></a></li>
 			</ul>
 		</li>
 		<!--{else}-->
-<!--		<li><a href="--><?//=base_url('math/')?><!--">--><?//=ucfirst(_('math module'))?><!--</a></li>-->
+<!--		<li><a href="--><?//=site_url('math/')?><!--">--><?//=ucfirst(_('math module'))?><!--</a></li>-->
 		<!--{/if}-->
 	</ul>
 </div>

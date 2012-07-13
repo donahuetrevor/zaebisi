@@ -13,7 +13,7 @@
         </label>
         <div class="clear"></div>
     </form>
-    <a href="<?=base_url('invited/')?>" id="invited">
+    <a href="<?=site_url('invited/')?>" id="invited">
         <span><?=_('invited')?>!</span>
     </a>
     <div class="clear"></div>
