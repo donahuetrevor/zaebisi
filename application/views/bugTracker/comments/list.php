@@ -3,7 +3,7 @@
     <?php foreach($commentsList as $ccommentObj): ?>
     <div>
         <span><?=$ccommentObj->datetime_added?></span><br />
-        <span><?=$ccommentObj->content?></span>
+        <span><?=$ccommentObj->content?></span><hr>
     </div>
     <?php endforeach; ?>
 </div>
