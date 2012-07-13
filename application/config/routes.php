@@ -42,7 +42,7 @@ $route['404_override'] = '';
 
 */
 
-//$route['default_controller'] = 'home/index';
+$route['default_controller'] = 'home/index';
 
 $route['auth/(:any)'] = 'auth/$1';
 $route['movies/(:any)'] = 'movies/$1';
@@ -55,17 +55,17 @@ $route['movie-reviews/lists'] = 'movieReviews/lists';
 $route['movie-titles/(\d+)'] = 'movieTitles/view/$1';
 $route['movie-titles/assign/(\d+)'] = 'movieTitles/assign/$1';
 
-$route['bug-tracker-issue/create']      = 'bugTrackerIssue/create/$1';
-$route['bug-tracker-issue/edit/(\d+)']  = 'bugTrackerIssue/edit/$1';
-$route['bug-tracker-issue/view/(\d+)']  = 'bugTrackerIssue/view/$1';
-$route['bug-tracker-issue/delete/(\d+)']  = 'bugTrackerIssue/delete/$1';
-$route['bug-tracker-issue/list']  = 'bugTrackerIssue/list_action/';
+$route['bug-tracker-issues/create']      = 'bugTrackerIssue/create/$1';
+$route['bug-tracker-issues/edit/(\d+)']  = 'bugTrackerIssue/edit/$1';
+$route['bug-tracker-issues/view/(\d+)']  = 'bugTrackerIssue/view/$1';
+$route['bug-tracker-issues/delete/(\d+)']  = 'bugTrackerIssue/delete/$1';
+$route['bug-tracker-issues/list']  = 'bugTrackerIssue/list_action/';
 
-$route['bug-tracker-issue-comment/create']      = 'BugTrackerIssueComments/create/$1';
-$route['bug-tracker-issue-comment/edit/(\d+)']  = 'BugTrackerIssueComments/edit/$1';
-$route['bug-tracker-issue-comment/view/(\d+)']  = 'BugTrackerIssueComments/view/$1';
-$route['bug-tracker-issue-comment/delete/(\d+)']  = 'BugTrackerIssueComments/delete/$1';
-$route['bug-tracker-issue-comment/list']  = 'BugTrackerIssueComments/list_action/';
+$route['bug-tracker-issue-comments/create']      = 'bug_tracker_issue_comments/create/$1';
+$route['bug-tracker-issue-comments/edit/(\d+)']  = 'bug_tracker_issue_comments/edit/$1';
+$route['bug-tracker-issue-comments/view/(\d+)']  = 'bug_tracker_issue_comments/view/$1';
+$route['bug-tracker-issue-comments/delete/(\d+)']  = 'bug_tracker_issue_comments/delete/$1';
+$route['bug-tracker-issue-comments/list']  = 'bug_tracker_issue_comments/list_action/';
 
 
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';

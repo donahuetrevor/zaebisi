@@ -1,6 +1,6 @@
 <?php
 
-class BugTrackerIssue extends CI_Controller {
+class Bug_Tracker_Issues extends CI_Controller {
 
     public function index() {
 
