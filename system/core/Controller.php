@@ -53,9 +53,6 @@ class CI_Controller {
 		$this->load->initialize();
 		
 		log_message('debug', "Controller Class Initialized");
-
-        // Log in check
-        $this->data['huiak'] = 'test';
 	}
 
 	public static function &get_instance()

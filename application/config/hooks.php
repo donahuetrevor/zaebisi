@@ -10,7 +10,13 @@
 |
 */
 
-
+$hook['post_controller_constructor'] = array(
+	'class'    => 'Ion_Auth_Hook',
+	'function' => 'check_logged_in',
+	'filename' => 'ion_auth.php',
+	'filepath' => 'hooks',
+	'params'   => array()
+);
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

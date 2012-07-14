@@ -8,14 +8,12 @@
             <!--{/if}-->
         </ul>
         <ul id="top-rghtnav">
-            <!--{if $smarty.session.admin}
-                {if $smarty.session.group->id <= 2}
-                <li><a href="{$smarty.const.ADMIN_URL}bug-tracker/">{$lang.bug_tracker}</a></li>
-                {/if}
-                <li><a id="logout-user" href="javascript:void(0);">{$lang.log_out}</a></li>
-            {else}
-                <li><a href="{$smarty.const.ADMIN_URL}account/login/">{$lang.log_in}</a></li>
-            {/if}-->
+	        <?php if($auth->logged_in()): ?>
+	        <li><a href="<?=site_url('users/'.$auth->user_id)?>"><?=$auth->username?></a></li>
+	        <li><a href="<?=site_url('auth/logout')?>"><?=_('log out')?></a></li>
+		    <?php else: ?>
+	        <li><a href="<?=site_url('auth/login')?>">Log In</a></li>
+			<?php endif; ?>
         </ul>
         <div class="clear"></div>
     </div>
