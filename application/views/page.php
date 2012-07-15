@@ -9,7 +9,7 @@
         </ul>
         <ul id="top-rghtnav">
 	        <?php if($auth->logged_in()): ?>
-	        <li><a href="<?=site_url('users/'.$auth->user_id)?>"><?=$auth->username?></a></li>
+	        <li><a href="<?=site_url('auth/'.$auth->user_id)?>"><?=$auth->username?></a></li>
 	        <li><a href="<?=site_url('auth/logout')?>"><?=_('log out')?></a></li>
 		    <?php else: ?>
 	        <li><a href="<?=site_url('auth/login')?>">Log In</a></li>

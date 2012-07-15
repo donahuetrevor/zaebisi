@@ -20,7 +20,7 @@ class Ion_Auth_Hook {
 
 		$auth_dummy = new Auth_dummy();
 
-//		$auth_dummy->redirect_if_needed();
+		$auth_dummy->redirect_if_needed();
 
 		$auth_dummy->load($this->CI->session->all_userdata());
 		$this->CI->load->auth = $auth_dummy;

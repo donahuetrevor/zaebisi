@@ -38,7 +38,7 @@ class Auth extends CI_Controller {
 			}
 
 
-			$this->load->view('auth/index', $this->data);
+			$this->load->view_page('auth/index', $this->data);
 		}
 	}
 
@@ -318,7 +318,7 @@ class Auth extends CI_Controller {
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
 
-			$this->load->view('auth/deactivate_user', $this->data);
+			$this->load->view_page('auth/deactivate_user', $this->data);
 		}
 		else
 		{
@@ -458,6 +458,27 @@ class Auth extends CI_Controller {
 		{
 			return FALSE;
 		}
+	}
+
+	public function view($id)
+	{
+
+		$user_obj = R::load('users', $id);
+
+		if (!$user_obj->id) {
+			/**
+			 * @todo error and redirect to user list
+			 */
+			exit('404, no user with such id');
+		}
+		$user_obj->ip_address = $this->ion_auth->_unprepare_ip($user_obj->ip_address);
+
+		$this->data['user_obj'] = $user_obj;
+
+//		print_r($this->data['user_obj']);
+//		exit();
+
+		$this->load->view_page('auth/view', $this->data);
 	}
 
 }

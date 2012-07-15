@@ -25,8 +25,8 @@ class Auth_dummy
 
 	public function redirect_if_needed() {
 
-		var_dump(preg_match('/auth\/*/', uri_string()));
-		exit();
+//		var_dump(preg_match('/auth\/*/', uri_string()));
+//		exit();
 
 		if ( !((boolean) preg_match('/auth\/*/', uri_string())) && !$this->CI->ion_auth->logged_in()) {
 			/**
@@ -38,6 +38,11 @@ class Auth_dummy
 
 	public function logged_in() {
 		return $this->CI->ion_auth->logged_in();
+	}
+
+	public function pack() {
+		$result = array();
+//		$result
 	}
 
 }

@@ -1742,4 +1742,15 @@ class Ion_auth_model extends CI_Model
 			return inet_pton($ip_address);
 		}
 	}
+
+	public function _unprepare_ip($ip_address) {
+		if ($this->db->platform() === 'postgre')
+		{
+			return $ip_address;
+		}
+		else
+		{
+			return inet_ntop($ip_address);
+		}
+	}
 }
