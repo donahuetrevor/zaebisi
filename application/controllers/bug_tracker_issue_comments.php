@@ -34,7 +34,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/create');
+        $this->load->view_page('bug_tracker/comments/create');
 
     }
 
@@ -66,7 +66,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/edit',$data);
+        $this->load->view_page('bug_tracker/comments/edit',$data);
 
 
     }
@@ -80,7 +80,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/view', $data);
+        $this->load->view_page('bug_tracker/comments/view', $data);
 
     }
 
@@ -105,10 +105,10 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         /**
          * view load
          */
-        $this->load->view_page('bugTracker/comments/delete',$data);
+        $this->load->view_page('bug_tracker/comments/delete',$data);
     }
 
-    public function list_action($issue_id = '', $sort='dateadded', $order='desc')
+    public function list_action($issue_id = null, $sort='dateadded', $order='desc')
     {
 
         $sortArray = array('id', 'title', 'dateadded');
@@ -119,15 +119,15 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
              */
         }
 
-        $ccommentsList = R::find('issue_comments',
+        $commentsList = R::find('issue_comments',
             'issue_id = :issue_id AND deleted = 0 ORDER BY :sortorder',
             array( ':sortorder' => $sort,
                 ':issue_id' => $issue_id
             ));
 
-        $data['commentsList'] = $ccommentsList;
+        $data['commentsList'] = $commentsList;
 
-        $this->load->view_page('bugTracker/comments/list',$data);
+        $this->load->view_page('bug_tracker/comments/list',$data);
 
     }
 

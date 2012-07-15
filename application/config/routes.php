@@ -47,7 +47,11 @@ $route['404_override'] = '';
  */
 $route['default_controller'] = 'home/index';
 
-$route['auth/(:any)'] = 'auth/$1';
+/**
+ * Auth (users)
+ */
+//$route['auth/(:any)'] = 'auth/$1';
+$route['auth/(\d+)'] = 'auth/view/$1';
 
 /**
  * Movies
@@ -88,11 +92,11 @@ $route['bug-tracker-issues/list']  = 'bug_tracker_issues/list_action';
 /**
  * Bug Tracker issue comments
  */
-$route['bug-tracker-issue-comments/create']      = 'bug_tracker_issue_comments/create';
+$route['bug-tracker-issue-comments/create/(\d+)']      = 'bug_tracker_issue_comments/create/$1';
 $route['bug-tracker-issue-comments/edit/(\d+)']  = 'bug_tracker_issue_comments/edit/$1';
 $route['bug-tracker-issue-comments/view/(\d+)']  = 'bug_tracker_issue_comments/view/$1';
 $route['bug-tracker-issue-comments/delete/(\d+)']  = 'bug_tracker_issue_comments/delete/$1';
-$route['bug-tracker-issue-comments/list']  = 'bug_tracker_issue_comments/list_action';
+$route['bug-tracker-issue-comments/list/(\d+)']  = 'bug_tracker_issue_comments/list_action/$1';
 
 
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
