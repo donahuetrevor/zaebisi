@@ -438,6 +438,8 @@ class CI_Loader {
 //        $data['description'] = (@$data['description'] ?: 'test description');
 
         $data['include'] = $page_view;
+		$data['auth'] = $this->auth;
+
         return $this->view('page', $data);
     }
 
