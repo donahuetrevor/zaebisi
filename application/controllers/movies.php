@@ -7,10 +7,10 @@ class Movies extends CI_Controller {
 //		$list = R::find('movies', 'ORDER BY :sortorder', array( ':sortorder'=> 'date'));
 
 
-		$this->gettext_language->load_gettext('ro_RO');
-
-		echo _('username');
-		exit();
+//		$this->gettext_language->load_gettext('ro_RO');
+//
+//		echo _('username');
+//		exit();
 
 //        $now = date('Y-m-d H:i:s', time());
 //
@@ -30,6 +30,11 @@ class Movies extends CI_Controller {
 //        $movieTitle->visible = true;
 //
 //        $movieTitleId = R::store($movieTitle);
+
+		/**
+		 * view load
+		 */
+		$this->load->view_page('movies/index', $this->data);
 
     }
 

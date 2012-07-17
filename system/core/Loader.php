@@ -437,10 +437,16 @@ class CI_Loader {
 //        $data['keywords'] = (@$data['keywords'] ?: 'test keywords');
 //        $data['description'] = (@$data['description'] ?: 'test description');
 
-        $data['include'] = $page_view;
+	    /**
+	     * @todo customize for per user choice
+	     */
+	    $template = 'spina';
+
+	    $data['template_name'] = $template;
+        $data['include'] = $template.'/'.$page_view;
 		$data['auth'] = $this->auth;
 
-        return $this->view('page', $data);
+        return $this->view($template.'/page', $data);
     }
 
 	// --------------------------------------------------------------------
