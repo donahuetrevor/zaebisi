@@ -33,6 +33,9 @@ class CI_Controller {
 
     protected $data;
 
+	protected $error_array;
+	protected $success_array;
+
 	/**
 	 * Constructor
 	 */
@@ -59,6 +62,25 @@ class CI_Controller {
 	{
 		return self::$instance;
 	}
+
+	public function add_error_msg($error_msg) {
+		$this->error_array[] = strip_tags($error_msg, '<a>');
+	}
+
+	public function add_success_msg($success_msg) {
+		$this->success_array[] = strip_tags($success_msg, '<a>');
+	}
+
+	public function __destruct() {
+		/**
+		 * Setting an error "flashdata" array that will only be available for the next server request,
+		 * and is then automatically cleared
+		 */
+		$this->session->set_flashdata('errors', $this->error_array);
+		$this->session->set_flashdata('success_msgs', $this->success_array);
+	}
+
+
 }
 // END Controller class
 

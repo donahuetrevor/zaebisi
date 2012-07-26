@@ -50,6 +50,15 @@ class CI_Model {
 		$CI =& get_instance();
 		return $CI->$key;
 	}
+
+	function convertArrayToObject($array) {
+
+		function convertToObj($array) {
+			return (object) $array;
+		}
+
+		return array_map('convertToObj', $array);
+	}
 }
 // END Model Class
 

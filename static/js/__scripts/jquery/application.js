@@ -307,7 +307,15 @@ $('document').ready(function() {
     /*******
       Tabs
     *******/
-  
+
+    $('.with-fs').livequery(function(){
+      var last = $(this).children().last();
+      stepNr = ++/#step(\d+)/gi.exec(last.find('a').attr('href'))[1];
+      last = last.clone();
+      last.find('a').attr('href', '#final-step').html(stepNr + '. done');
+      last.appendTo($(this));
+    });
+
     // Hide all .tab-content divs
     $('.tab-content').livequery(function() {
       $(this).hide();
@@ -347,7 +355,7 @@ $('document').ready(function() {
         return false;
       });
     });
-    
+
     /***********
       Tooltips
     ***********/

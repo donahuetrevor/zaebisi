@@ -56,7 +56,20 @@ $route['auth/(\d+)'] = 'auth/view/$1';
 /**
  * Movies
  */
-$route['movies/(:any)'] = 'movies/$1';
+//$route['movies/(:any)'] = 'movies/$1';
+$route['movies/list'] = 'movies/list_action';
+$route['movies/edit/(\d+)'] = 'movies/edit/$1';
+
+/**
+ * Movie genres
+ */
+$tmp = 'movie-genres';
+$route[$tmp.'/list/(:any)/(:any)'] = 'movie_genres/list_action/$1/$2';
+$route[$tmp.'/list/(:any)'] = 'movie_genres/list_action/$1';
+$route[$tmp.'/list'] = 'movie_genres/list_action';
+$route[$tmp.'/edit/(\d+)'] = 'movie_genres/edit/$1';
+$route['movie-genres/(:any)'] = 'movie_genres/$1';
+$route[$tmp] = 'movie_genres';
 
 /**
  * Movie reviews
