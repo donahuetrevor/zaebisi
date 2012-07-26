@@ -64,8 +64,7 @@ $autoload['libraries'] = array('rb','database','gettext_language','session','ema
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
-
+$autoload['helper'] = array('url', 'date');
 
 /*
 | -------------------------------------------------------------------

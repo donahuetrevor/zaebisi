@@ -62,8 +62,31 @@
 	</div>
 </nav>
 
+
+
 <section id="maincontainer">
 	<div id="main" class="container_12">
+
+	<?php if ($errors): ?>
+	<?php foreach($errors as $error_string): ?>
+	<div class="notification error">
+		<span class="icon"></span>
+		<?=$error_string?>
+		<a href="#" class="close">x</a>
+	</div>
+	<?php endforeach; ?>
+	<?php endif; ?>
+
+	<?php if ($success_msgs): ?>
+	<?php foreach($success_msgs as $success_string): ?>
+		<div class="notification success">
+			<span class="icon"></span>
+			<?=$success_string?>
+			<a href="#" class="close">x</a>
+		</div>
+	<?php endforeach; ?>
+	<?php endif; ?>
+
 <?php endif; ?>
 
 <?php $this->load->view($include); ?>

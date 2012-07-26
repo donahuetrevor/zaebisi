@@ -446,7 +446,11 @@ class CI_Loader {
         $data['include'] = $template.'/'.$page_view;
 		$data['auth'] = $this->auth;
 
-        return $this->view($template.'/page', $data);
+	    $data['errors'] = $this->errors;
+	    $data['success_msgs'] = $this->success_msgs;
+
+
+	    return $this->view($template.'/page', $data);
     }
 
 	// --------------------------------------------------------------------

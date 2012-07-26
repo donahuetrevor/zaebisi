@@ -4,10 +4,10 @@
 
 @font-face {
     font-family: 'Aller';
-    src: url('/fonts/aller_bd-webfont.eot');
-    src: url('/fonts/aller_bd-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/aller_bd-webfont.woff') format('woff'),
-         url('/fonts/aller_bd-webfont.svg#AllerBold') format('svg');
+    src: url('../../fonts/aller_bd-webfont.eot');
+    src: url('../../fonts/aller_bd-webfont.eot?#iefix') format('embedded-opentype'),
+url('../../fonts/aller_bd-webfont.woff') format('woff'),
+         url('../../fonts/aller_bd-webfont.svg#AllerBold') format('svg');
     font-weight: bold;
     font-style: normal;
 
@@ -15,10 +15,10 @@
 
 @font-face {
     font-family: 'Aller';
-    src: url('/fonts/aller_bdit-webfont.eot');
-    src: url('/fonts/aller_bdit-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/aller_bdit-webfont.woff') format('woff'),
-         url('/fonts/aller_bdit-webfont.svg#AllerBoldItalic') format('svg');
+    src: url('../../fonts/aller_bdit-webfont.eot');
+    src: url('../../fonts/aller_bdit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/aller_bdit-webfont.woff') format('woff'),
+         url('../../fonts/aller_bdit-webfont.svg#AllerBoldItalic') format('svg');
     font-weight: bold;
     font-style: italic;
 
@@ -26,10 +26,10 @@
 
 @font-face {
     font-family: 'Aller';
-    src: url('/fonts/aller_it-webfont.eot');
-    src: url('/fonts/aller_it-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/aller_it-webfont.woff') format('woff'),
-         url('/fonts/aller_it-webfont.svg#AllerItalic') format('svg');
+    src: url('../../fonts/aller_it-webfont.eot');
+    src: url('../../fonts/aller_it-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/aller_it-webfont.woff') format('woff'),
+         url('../../fonts/aller_it-webfont.svg#AllerItalic') format('svg');
     font-weight: normal;
     font-style: italic;
 
@@ -37,10 +37,10 @@
 
 @font-face {
     font-family: 'Aller';
-    src: url('/fonts/aller_lt-webfont.eot');
-    src: url('/fonts/aller_lt-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/aller_lt-webfont.woff') format('woff'),
-         url('/fonts/aller_lt-webfont.svg#AllerLightRegular') format('svg');
+    src: url('../../fonts/aller_lt-webfont.eot');
+    src: url('../../fonts/aller_lt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/aller_lt-webfont.woff') format('woff'),
+         url('../../fonts/aller_lt-webfont.svg#AllerLightRegular') format('svg');
     font-weight: 100;
     font-style: normal;
 
@@ -48,10 +48,10 @@
 
 @font-face {
     font-family: 'Aller';
-    src: url('/fonts/aller_ltit-webfont.eot');
-    src: url('/fonts/aller_ltit-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/aller_ltit-webfont.woff') format('woff'),
-         url('/fonts/aller_ltit-webfont.svg#AllerLightItalic') format('svg');
+    src: url('../../fonts/aller_ltit-webfont.eot');
+    src: url('../../fonts/aller_ltit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/aller_ltit-webfont.woff') format('woff'),
+         url('../../fonts/aller_ltit-webfont.svg#AllerLightItalic') format('svg');
     font-weight: 100;
     font-style: italic;
 
@@ -59,10 +59,10 @@
 
 @font-face {
     font-family: 'Aller';
-    src: url('/fonts/aller_rg-webfont.eot');
-    src: url('/fonts/aller_rg-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/aller_rg-webfont.woff') format('woff'),
-         url('/fonts/aller_rg-webfont.svg#AllerRegular') format('svg');
+    src: url('../../fonts/aller_rg-webfont.eot');
+    src: url('../../fonts/aller_rg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/aller_rg-webfont.woff') format('woff'),
+         url('../../fonts/aller_rg-webfont.svg#AllerRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
