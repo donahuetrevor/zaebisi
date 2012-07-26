@@ -1,6 +1,6 @@
 <?php
 
-define('STATICPATH', 'http://local.zaebisi.com/static/');
+define('STATICPATH', 'http://localhost:8080/zaebisi.com/zaebisi/static/');
 
 /*
  *---------------------------------------------------------------
@@ -192,10 +192,6 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
-
-    define('APLICATIONPATH', FCPATH.'application\\');
-
-    define('VIEWPATH', APLICATIONPATH.'views\\');
 
 
 /*
