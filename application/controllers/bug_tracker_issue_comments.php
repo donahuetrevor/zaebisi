@@ -17,7 +17,7 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
             /*
              * @todo for later (user login)
              */
-            $issueCommentObj->user_id_added = 2;
+            $issueCommentObj->user_id_added = $this->auth->user_id;;
             $issueCommentObj->content  = $_POST['comment_text'];
             $issueCommentObj->issue_id   = $issue_id;
             $issueCommentObj->datetime_added = $now;

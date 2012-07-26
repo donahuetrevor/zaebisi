@@ -486,4 +486,5 @@ class Auth extends CI_Controller {
 		$this->load->view_page('auth/view', $this->data);
 	}
 
+
 }

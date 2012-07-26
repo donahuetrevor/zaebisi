@@ -8,24 +8,23 @@ class Bug_Tracker_Issues extends CI_Controller {
 
     public function create()
     {
-        if (!empty($_POST))
+        //echo "<pre>"; print_r($this->auth->user_id); echo"</pre>";
+
+        if ( ! empty($_POST))
         {
             $now = date('Y-m-d H:i:s', time());
 
             $issueObj = R::dispense("issues");
-            /*
-             * @todo for later (user login)
-             */
-            $issueObj->user_id_added = 2;
+            $issueObj->user_id_added = $this->auth->user_id;
             $issueObj->name = $_POST['issue_name'];
             $issueObj->description = $_POST['issue_detail'];
             $issueObj->status = $_POST['select_status'];
             $issueObj->priority = $_POST['select_priority'];
             $issueObj->tags = $_POST['issue_tags'];
-            $issueObj->visible = (empty($_POST['issue_visible'])) ? false : true;
-            $issueObj->commentmode =  (empty($_POST['issue_comment_mode'])) ? false : true;
-            $issueObj->approved = true;
-            $issueObj->deleted = false;
+            $issueObj->visible = (empty($_POST['issue_visible'])) ? FALSE : TRUE;
+            $issueObj->commentmode =  (empty($_POST['issue_comment_mode'])) ? FALSE : TRUE;
+            $issueObj->approved = TRUE;
+            $issueObj->deleted = FALSE;
             $issueObj->datetime_added = $now;
             $issueObj->datetime_lastedited = $now;
 
@@ -35,8 +34,8 @@ class Bug_Tracker_Issues extends CI_Controller {
         }
 
         /**
-        * view load
-        */
+         * view load
+         */
         $this->load->view_page('bug_tracker/issues/create');
 
     }
@@ -61,8 +60,8 @@ class Bug_Tracker_Issues extends CI_Controller {
             $issueObj->status = $_POST['select_status'];
             $issueObj->priority = $_POST['select_priority'];
             $issueObj->tags = $_POST['issue_tags'];
-            $issueObj->visible = (empty($_POST['issue_visible'])) ? false : true;
-            $issueObj->commentmode =  (empty($_POST['issue_comment_mode'])) ? false : true;
+            $issueObj->visible = (empty($_POST['issue_visible'])) ? FALSE : TRUE;
+            $issueObj->commentmode =  (empty($_POST['issue_comment_mode'])) ? FALSE : TRUE;
             $issueObj->datetime_lastedited = $now;
 
             $issueID = R::store($issueObj);
@@ -121,7 +120,7 @@ class Bug_Tracker_Issues extends CI_Controller {
         $now = date('Y-m-d H:i:s', time());
 
         $issueObj->datetime_lastedited = $now;
-        $issueObj->deleted = true;
+        $issueObj->deleted = TRUE;
         $issueID = R::store($issueObj);
 
         $data['issueObj'] = $issueObj;

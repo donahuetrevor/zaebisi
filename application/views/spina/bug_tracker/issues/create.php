@@ -1,35 +1,62 @@
-<div id="form_container">
-    <h3>Add new Issue</h3>
-    <form id="new_issue_form" method="post" action="">
-        <label class="description" for="issue_name">Issue Title</label><br />
-        <input id="issue_name" name="issue_name" class="text medium" type="text" value=""/><br /><br />
-        <label class="description" for="issue_detail">Issue Detail </label><br />
-        <textarea rows="10" cols="20" id="issue_detail" name="issue_detail"></textarea><br /><br />
-        <label class="description" for="select_status">Select issue status</label><br />
-        <select class="select_styled" name="select_status" id="select_status">
-            <option value="new"><?=ucfirst(_('new'))?></option>
-            <option value="acknowledged"><?=ucfirst(_('acknowledged'))?></option>
-            <option value="confirmed"><?=ucfirst(_('confirmed'))?></option>
-            <option value="fixed"><?=ucfirst(_('fixed'))?></option>
-            <option value="closed"><?=ucfirst(_('closed'))?></option>
-        </select><br /><br />
-        <label class="description" for="select_priority">Select issue priority</label><br />
-        <select class="select_styled" name="select_priority" id="select_priority">
-            <option value="low"><?=ucfirst(_('low'))?></option>
-            <option value="medium"><?=ucfirst(_('medium'))?></option>
-            <option value="high"><?=ucfirst(_('high'))?></option>
-        </select><br /><br />
-        <label class="description" for="issue_tags">Issue Tags, <span>Separate tags with commas</span></label><br />
-        <input id="issue_tags" name="issue_tags" class="text medium" type="text" value=""/>
-        <br /><br />
-        <input type="checkbox" name="issue_visible" id="issue_visible" value="1"/>
-        <label class="description" for="issue_visible">This is a visible issue!</label><br />
-        <br />
-        <input type="checkbox" name="issue_comment_mode" id="issue_comment_mode" value="1"/>
-        <label class="description" for="issue_comment_mode">Activate comments mode</label><br />
-        <br />
-        <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
-        <a href="<?=site_url("bug-tracker-issues/list/")?>"><?=ucfirst(_('Cancel'))?></a>
-    </form>
+<div class="box">
+    <div class="box-header">
+        <h1><?=_('Create issue')?></h1>
+        <ul>
+            <li class="active"><a href="#one"></a></li>
+        </ul>
+    </div>
 
+    <div class="box-content">
+        <div id="one" class="tab-content">
+
+            <form method="post" action="" novalidate="novalidate">
+
+                <div>
+                    <p>
+                        <input type="text" class="{validate:{required:true, minlength:3}}" name="issue_name" id="issue_name" placeholder="<?=ucfirst(_('issue title'))?>">
+                        <span class="icon tick valid"></span>
+                    </p>
+                    <p>
+                        <textarea id="issue_detail" name="issue_detail" class="{validate:{required:true}}">Description</textarea>
+                    </p>
+                    <p>
+                        <select name="select_status" id="select_status" placeholder="status" class="{validate:{required:true}}">
+                            <option value="new"><?=ucfirst(_('new'))?></option>
+                            <option value="acknowledged"><?=ucfirst(_('acknowledged'))?></option>
+                            <option value="confirmed"><?=ucfirst(_('confirmed'))?></option>
+                            <option value="fixed"><?=ucfirst(_('fixed'))?></option>
+                            <option value="closed"><?=ucfirst(_('closed'))?></option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <select name="select_priority" id="select_priority" placeholder="priority" class="{validate:{required:true}}">
+                            <option value="low"><?=ucfirst(_('low'))?></option>
+                            <option value="medium"><?=ucfirst(_('medium'))?></option>
+                            <option value="high"><?=ucfirst(_('high'))?></option>
+                        </select>
+                    </p>
+                    <p>
+                        <textarea id="issue_tags" name="issue_tags" class="taginput"></textarea>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="issue_visible" id="issue_visible" />
+                        <label for="issue_visible">This is a visible issue!</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="issue_comment_mode" id="issue_comment_mode" />
+                        <label for="issue_comment_mode">Activate comments mode</label>
+                    </p>
+                </div>
+                <div class="clear"></div>
+
+                <div class="action_bar">
+                    <input type="submit" value="Save" class="button blue">
+                    <a class="button" href="<?=site_url("bug-tracker-issues/list/")?>"><?=ucfirst(_('cancel'))?></a>
+                </div>
+
+
+            </form>
+    </div>
 </div>
+
