@@ -1,3 +1,6 @@
+<div class="quick-actions">
+	<a href="<?=site_url('movie_genres/create')?>"><span class="glyph new"></span>Create genre</a>
+</div>
 <div class="box">
 	<div class="box-header">
 		<h1><?=_('movie genres list')?></h1>
