@@ -606,27 +606,53 @@ if ( ! function_exists('timezones'))
 	}
 }
 
-function time_since($since) {
-	$chunks = array(
-		array(60 * 60 * 24 * 365 , 'year'),
-		array(60 * 60 * 24 * 30 , 'month'),
-		array(60 * 60 * 24 * 7, 'week'),
-		array(60 * 60 * 24 , 'day'),
-		array(60 * 60 , 'hour'),
-		array(60 , 'minute'),
-		array(1 , 'second')
-	);
+function time_since($date) {
+    if(empty($date)) {
 
-	for ($i = 0, $j = count($chunks); $i < $j; $i++) {
-		$seconds = $chunks[$i][0];
-		$name = $chunks[$i][1];
-		if (($count = floor($since / $seconds)) != 0) {
-			break;
-		}
-	}
+        return "No date provided";
 
-	$print = ($count == 1) ? '1 '.$name : "$count {$name}s";
-	return $print.' ago';
+    }
+
+    $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+    $lengths = array("60","60","24","7","4.35","12","10");
+    $now = time();
+    $unix_date = strtotime($date);
+
+// check validity of date
+
+    if(empty($unix_date)) {
+
+        return "Bad date";
+
+    }
+
+// is it future date or past date
+
+    if($now > $unix_date) {
+
+        $difference = $now - $unix_date;
+        $tense = "ago";
+
+    } else {
+
+        $difference = $unix_date - $now;
+        $tense = "from now";}
+
+    for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+
+        $difference /= $lengths[$j];
+
+    }
+
+    $difference = round($difference);
+
+    if($difference != 1) {
+
+        $periods[$j].= "s";
+
+    }
+
+    return "$difference $periods[$j] {$tense}";
 }
 
 /* End of file date_helper.php */

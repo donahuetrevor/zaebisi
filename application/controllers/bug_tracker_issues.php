@@ -2,6 +2,12 @@
 
 class Bug_Tracker_Issues extends CI_Controller {
 
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('bug_tracker_issue_comment');
+    }
+
     public function index() {
 
     }
@@ -14,36 +20,49 @@ class Bug_Tracker_Issues extends CI_Controller {
         {
             $now = date('Y-m-d H:i:s', time());
 
-            $issueObj = R::dispense("issues");
-            $issueObj->user_id_added = $this->auth->user_id;
-            $issueObj->name = $_POST['issue_name'];
-            $issueObj->description = $_POST['issue_detail'];
-            $issueObj->status = $_POST['select_status'];
-            $issueObj->priority = $_POST['select_priority'];
-            $issueObj->tags = $_POST['issue_tags'];
-            $issueObj->visible = (empty($_POST['issue_visible'])) ? FALSE : TRUE;
-            $issueObj->commentmode =  (empty($_POST['issue_comment_mode'])) ? FALSE : TRUE;
-            $issueObj->approved = TRUE;
-            $issueObj->deleted = FALSE;
-            $issueObj->datetime_added = $now;
-            $issueObj->datetime_lastedited = $now;
+            $issue_obj = R::dispense("issues");
+            $issue_obj->user_id_added = $this->auth->user_id;
+            $issue_obj->name = $_POST['issue_name'];
+            $issue_obj->description = $_POST['issue_detail'];
+            $issue_obj->status = $_POST['select_status'];
+            $issue_obj->priority = $_POST['select_priority'];
+            $issue_obj->tags = $_POST['issue_tags'];
+            $issue_obj->visible = (empty($_POST['issue_visible'])) ? FALSE : TRUE;
+            $issue_obj->commentmode =  (empty($_POST['issue_comment_mode'])) ? FALSE : TRUE;
+            $issue_obj->approved = TRUE;
+            $issue_obj->deleted = FALSE;
+            $issue_obj->datetime_added = $now;
+            $issue_obj->datetime_lastedited = $now;
 
-            $issueID = R::store($issueObj);
+            $issue_assign_obj = R::dispense('issue_assignations');
+            $issue_assign_obj->user_id_assignator = $_POST['assign_user'];
+            $issue_assign_obj->user_id = $this->auth->user_id;
+            $issue_assign_obj->deleted = FALSE;
+            $issue_assign_obj->datetime_added = $now;
+            $issue_assign_obj->datetime_lastedited = $now;
 
-            echo 'Issue with id ' . $issueID . ' created';
+            $issue_assign_obj->issue = $issue_obj;
+
+
+            $issue_assign_id = R::store($issue_assign_obj);
+
         }
+        $issue_list = R::findAll('users',' ORDER BY first_name');
+
+        $data['issue_list'] = $issue_list;
+
 
         /**
          * view load
          */
-        $this->load->view_page('bug_tracker/issues/create');
+        $this->load->view_page('bug_tracker/issues/create', $data);
 
     }
     public function edit($id)
     {
-        $issueObj = R::load("issues",$id);
+        $issue_obj = R::load("issues",$id);
 
-        if(!$issueObj->id){
+        if(!$issue_obj->id){
             /**
              * @todo add redirect functionality
              */
@@ -55,19 +74,29 @@ class Bug_Tracker_Issues extends CI_Controller {
 
             $now = date('Y-m-d H:i:s', time());
 
-            $issueObj->name = $_POST['issue_name'];
-            $issueObj->description = $_POST['issue_detail'];
-            $issueObj->status = $_POST['select_status'];
-            $issueObj->priority = $_POST['select_priority'];
-            $issueObj->tags = $_POST['issue_tags'];
-            $issueObj->visible = (empty($_POST['issue_visible'])) ? FALSE : TRUE;
-            $issueObj->commentmode =  (empty($_POST['issue_comment_mode'])) ? FALSE : TRUE;
-            $issueObj->datetime_lastedited = $now;
+            $issue_obj->name = $_POST['issue_name'];
+            $issue_obj->description = $_POST['issue_detail'];
+            $issue_obj->status = $_POST['select_status'];
+            $issue_obj->priority = $_POST['select_priority'];
+            $issue_obj->tags = $_POST['issue_tags'];
+            $issue_obj->visible = (empty($_POST['issue_visible'])) ? FALSE : TRUE;
+            $issue_obj->commentmode =  (empty($_POST['issue_comment_mode'])) ? FALSE : TRUE;
+            $issue_obj->datetime_lastedited = $now;
 
-            $issueID = R::store($issueObj);
+            $issue_assign_obj = R::dispense('issue_assignations');
+            $issue_assign_obj->user_id_assignator = $_POST['assign_user'];
+            $issue_assign_obj->user_id = $this->auth->user_id;
+            $issue_assign_obj->deleted = FALSE;
+            $issue_assign_obj->datetime_added = $now;
+            $issue_assign_obj->datetime_lastedited = $now;
+
+            $issue_assign_obj->issue = $issue_obj;
+
+
+            $issue_assign_id = R::store($issue_assign_obj);
 
         }
-        $data['issueObj'] = $issueObj;
+        $data['issue_obj'] = $issue_obj;
 
         /**
          * view load
@@ -79,9 +108,9 @@ class Bug_Tracker_Issues extends CI_Controller {
 
     public function view($id,$sort='dateadded', $order='desc')
     {
-        $issueObj = R::load("issues",$id);
+        $issue_obj = R::load("issues",$id);
 
-        $data['issueObj'] = $issueObj;
+        $data['issue_obj'] = $issue_obj;
 
         $sortArray = array('id', 'title', 'dateadded');
 
@@ -91,13 +120,13 @@ class Bug_Tracker_Issues extends CI_Controller {
              */
         }
 
-        $ccommentsList = R::find('issue_comments',
-            'issue_id = :issue_id AND deleted = 0 ORDER BY :sortorder',
-            array( ':sortorder' => $sort,
-                ':issue_id' => $id
-            ));
+        $comments_list = $this->bug_tracker_issue_comment->get_all_by($id);
 
-        $data['commentsList'] = $ccommentsList;
+        $data['comments_list'] = $comments_list;
+
+        $user_obj = R::load("users",$issue_obj->user_id_added);
+
+        $data['user_obj'] = $user_obj;
 
 
         /**
@@ -109,9 +138,9 @@ class Bug_Tracker_Issues extends CI_Controller {
 
     public function delete($id)
     {
-        $issueObj = R::load("issues",$id);
+        $issue_obj = R::load("issues",$id);
 
-        if(!$issueObj->id){
+        if(!$issue_obj->id){
             /**
              * @todo add redirect functionality
              */
@@ -119,11 +148,11 @@ class Bug_Tracker_Issues extends CI_Controller {
 
         $now = date('Y-m-d H:i:s', time());
 
-        $issueObj->datetime_lastedited = $now;
-        $issueObj->deleted = TRUE;
-        $issueID = R::store($issueObj);
+        $issue_obj->datetime_lastedited = $now;
+        $issue_obj->deleted = TRUE;
+        $issueID = R::store($issue_obj);
 
-        $data['issueObj'] = $issueObj;
+        $data['issue_obj'] = $issue_obj;
 
         /**
          * view load
@@ -136,20 +165,20 @@ class Bug_Tracker_Issues extends CI_Controller {
         $issueList = R::find('issues');
 
 
-        $sortArray = array('id', 'title', 'dateadded');
+        $sort_array = array('id', 'title', 'dateadded');
 
-        if (!in_array($sort, $sortArray)) {
+        if (!in_array($sort, $sort_array)) {
             /**
              * @todo redirect with error
              */
         }
 
-        $issueList = R::find('issues',
+        $issue_list = R::find('issues',
             'deleted = 0 ORDER BY :sortorder',
             array( ':sortorder' => $sort
             ));
 
-        $data['issueList'] = $issueList;
+        $data['issue_list'] = $issue_list;
 
         $this->load->view_page('bug_tracker/issues/list',$data);
 

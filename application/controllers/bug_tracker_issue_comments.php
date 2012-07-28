@@ -2,6 +2,11 @@
 
 class Bug_Tracker_Issue_Comments extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('bug_tracker_issue_comment');
+    }
+
     public function index()
     {
 
@@ -31,18 +36,19 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
             echo 'Comment ' . $issueCommentID . '  for issue was created';
         }
 
+        $data['issue_id'] = $issue_id;
         /**
          * view load
          */
-        $this->load->view_page('bug_tracker/comments/create');
+        $this->load->view_page('bug_tracker/comments/create',$data);
 
     }
 
     public function edit($id)
     {
-        $issueCommentObj = R::load("issue_comments",$id);
+        $issue_comment_obj = R::load("issue_comments",$id);
 
-        if(!$issueCommentObj->id){
+        if(!$issue_comment_obj->id){
             /**
              * @todo add redirect functionality
              */
@@ -53,15 +59,16 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
 
             $now = date('Y-m-d H:i:s', time());
 
-            $issueCommentObj->content = $_POST['comment_text'];
-            $issueCommentObj->datetime_lastedited = $now;
+            $issue_comment_obj->content = $_POST['comment_text'];
+            $issue_comment_obj->datetime_lastedited = $now;
 //            $issueCommentObj->approved =  true;
 //            $issueCommentObj->visible =  true;
 //            $issueCommentObj->deleted =  false;
-            $issueCommentID = R::store($issueCommentObj);
+            $issueCommentID = R::store($issue_comment_obj);
 
         }
-        $data['issueCommentObj'] = $issueCommentObj;
+        $data['issue_comment_obj'] = $issue_comment_obj;
+
 
         /**
          * view load
@@ -86,9 +93,9 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
 
     public function delete($id)
     {
-        $issueCommentObj = R::load("issue_comments",$id);
+        $issue_comment_obj = R::load("issue_comments",$id);
 
-        if(!$issueCommentObj->id){
+        if(!$issue_comment_obj->id){
             /**
              * @todo add redirect functionality
              */
@@ -96,11 +103,11 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
 
         $now = date('Y-m-d H:i:s', time());
 
-        $issueCommentObj->datetime_lastedited = $now;
-        $issueCommentObj->deleted = true;
-        $issueID = R::store($issueCommentObj);
+        $issue_comment_obj->datetime_lastedited = $now;
+        $issue_comment_obj->deleted = true;
+        $issueID = R::store($issue_comment_obj);
 
-        $data['issueCommentObj'] = $issueCommentObj;
+        $data['issue_comment_obj'] = $issue_comment_obj;
 
         /**
          * view load
@@ -108,24 +115,12 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         $this->load->view_page('bug_tracker/comments/delete',$data);
     }
 
-    public function list_action($issue_id = null, $sort='dateadded', $order='desc')
+    public function list_action($issue_id = null)
     {
 
-        $sortArray = array('id', 'title', 'dateadded');
+        $comments_list = $this->bug_tracker_issue_comment->getByAll($issue_id);
 
-        if (!in_array($sort, $sortArray)) {
-            /**
-             * @todo redirect with error
-             */
-        }
-
-        $commentsList = R::find('issue_comments',
-            'issue_id = :issue_id AND deleted = 0 ORDER BY :sortorder',
-            array( ':sortorder' => $sort,
-                ':issue_id' => $issue_id
-            ));
-
-        $data['commentsList'] = $commentsList;
+        $data['comments_list'] = $comments_list;
 
         $this->load->view_page('bug_tracker/comments/list',$data);
 

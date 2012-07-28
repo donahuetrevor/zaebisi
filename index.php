@@ -191,7 +191,10 @@ if (defined('ENVIRONMENT'))
 		}
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
+
 	}
+
+    define('APPLICATIONPATH', str_replace("\\", "/", FCPATH.'application').'/');
 
 
 /*

@@ -1,23 +1,37 @@
-<div id="form_container">
-    <a href="<?=site_url("bug-tracker-issues/list/")?>"><?=ucfirst(_('Go to issue list'))?></a>
+<a href="<?=site_url("bug-tracker-issues/list/")?>" class="button"><?=ucfirst(_('go back'))?></a>
+<a href="<?=site_url('bug-tracker-issues/edit').'/'.$issue_obj->id?>" class="button"><?=ucfirst(_('edit'))?></a>
+<a href="<?=site_url('bug-tracker-issues/delete').'/'.$issue_obj->id?>" class="button"><?=ucfirst(_('delete'))?></a>
+<a href="<?=site_url("bug-tracker-issue-comments/create/".$issue_obj->id)?>" class="button"><?=ucfirst(_('add commnet'))?></a>
 
-    <h3>Issue Detail</h3>
-    Date : <span><?=$issueObj->datetime_added?></span>  <br />
+<br /><br />
+<div id="view_issue" class="box">
+    <div class="box-header">
+        <h1>Issue Details</h1>
+    </div>
+    <div class="box-content">
+        <div class="column-left">
+            <h3><?=$issue_obj->name?></h3>
+            <p><?=$issue_obj->description?></p>
+        </div>
+        <div class="column-right">
+            <div style="margin-bottom: 5px;"><span class="glyph user"></span> <?=$user_obj->first_name.' '.$user_obj->last_name?></div>
+            <div style="margin-bottom: 5px;"><span class="glyph calendar"></span> <?=time_since($issue_obj->datetime_added)?></div>
+            <div style="margin-bottom: 5px;"><span class="glyph eye"></span> <?=($issue_obj->visible)? ucfirst(_('public')) : ucfirst(_('private'))?></div>
+            <div style="margin-bottom: 5px;"><span class="glyph flag"></span> <?=ucfirst(_($issue_obj->priority))?></div>
+            <div><span class="glyph pinpoint"></span> <?=ucfirst(_($issue_obj->status))?></div>
+        </div>
+        <div class="clear"></div>
+        <div class="comments">
+            <?php if ( $issue_obj->commentmode == '1'):?>
 
-    Title : <span><?=$issueObj->name?></span>       <br />
-    <hr>
-    <p><?=$issueObj->description?></p>
-    <hr>
-    <br />
-</div>
+            <?php include( APPLICATIONPATH.'views/spina/bug_tracker/comments/list.php'); ?>
 
-<div class="comments">
-    <?php if ( $issueObj->commentmode == '1'): ?>
-        <?php include(APPPATH.'views\bugTracker\comments\list.php'); ?>
-        <a href="<?=site_url("bug-tracker-issue-comment/create/".$issueObj->id)?>"><?=ucfirst(_('Add commnet'))?></a>
+            <?php else : ?>
+            <h3><?=ucfirst(_('Topic of commets was closed'))?></h3>
+            <?php endif; ?>
+        </div>
 
-    <?php else : ?>
-             <h3>Topic of commets was closed</h3>
-    <?php endif; ?>
+    </div>
+
 </div>
 

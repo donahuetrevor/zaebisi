@@ -111,6 +111,13 @@ $route['bug-tracker-issue-comments/view/(\d+)']  = 'bug_tracker_issue_comments/v
 $route['bug-tracker-issue-comments/delete/(\d+)']  = 'bug_tracker_issue_comments/delete/$1';
 $route['bug-tracker-issue-comments/list/(\d+)']  = 'bug_tracker_issue_comments/list_action/$1';
 
+/**
+ * Bug Tracker issue asignations
+ */
+$route['bug-tracker-issue-assignations/create/(\d+)']      = 'bug_tracker_issue_assignations/create/$1';
+$route['bug-tracker-issue-assignations/delete/(\d+)']  = 'bug_tracker_issue_assignations/delete/$1';
+$route['bug-tracker-issue-assignations/list']  = 'bug_tracker_issue_assignations/list_action';
+
 
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';
