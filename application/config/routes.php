@@ -112,6 +112,9 @@ $route['bug-tracker-issue-comments/delete/(\d+)']  = 'bug_tracker_issue_comments
 $route['bug-tracker-issue-comments/list/(\d+)']  = 'bug_tracker_issue_comments/list_action/$1';
 
 
+$route['changes-log']  = 'changes_log/index';
+$route['changes-log/(:any)']  = 'changes_log/$1';
+
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';
 //$route['(:any)'] = 'movies/view/$1';
