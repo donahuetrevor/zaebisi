@@ -51,13 +51,15 @@
 <!-- Secondary navigation -->
 <nav id="secondary">
 	<ul>
-		<li class="active"><a href="#">Dashboard</a></li>
+		<li><a href="#">Dashboard</a></li>
 		<li><a href="#">Last user activities</a></li>
 		<li><a href="#">System logs</a></li>
+		<li<?=(strpos(uri_string(), 'changes-log') !== FALSE ? ' class="active"' : '')?>><a href="<?=site_url('changes_log/index')?>">Changes log</a></li>
 	</ul>
 
 	<div id="notifications">
 		<ul>
+			<li>test notification</li>
 		</ul>
 	</div>
 </nav>

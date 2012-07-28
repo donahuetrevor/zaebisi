@@ -119,6 +119,9 @@ $route['bug-tracker-issue-assignations/delete/(\d+)']  = 'bug_tracker_issue_assi
 $route['bug-tracker-issue-assignations/list']  = 'bug_tracker_issue_assignations/list_action';
 
 
+$route['changes-log']  = 'changes_log/index';
+$route['changes-log/(:any)']  = 'changes_log/$1';
+
 //$route['news/([a-z]+)/(\d+)'] = 'news/$1/$2';
 //$route['news'] = 'news';
 //$route['(:any)'] = 'movies/view/$1';
