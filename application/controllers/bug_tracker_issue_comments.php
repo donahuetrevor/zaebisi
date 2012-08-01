@@ -18,22 +18,22 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
         {
             $now = date('Y-m-d H:i:s', time());
 
-            $issueCommentObj = R::dispense("issue_comments");
-            /*
-             * @todo for later (user login)
-             */
-            $issueCommentObj->user_id_added = $this->auth->user_id;;
-            $issueCommentObj->content  = $_POST['comment_text'];
-            $issueCommentObj->issue_id   = $issue_id;
-            $issueCommentObj->datetime_added = $now;
-            $issueCommentObj->datetime_lastedited = $now;
-            $issueCommentObj->approved = true;
-            $issueCommentObj->visible = true;
-            $issueCommentObj->deleted = false;
+            $issue_comment_obj = R::dispense("issue_comments");
 
-            $issueCommentID = R::store($issueCommentObj);
+            $issue_comment_obj->user_id_added = $this->auth->user_id;;
+            $issue_comment_obj->content  = $_POST['comment_text'];
+            $issue_comment_obj->issue_id   = $issue_id;
+            $issue_comment_obj->datetime_added = $now;
+            $issue_comment_obj->datetime_lastedited = $now;
+            $issue_comment_obj->approved = TRUE;
+            $issue_comment_obj->visible = TRUE;
+            $issue_comment_obj->deleted = FALSE;
 
-            echo 'Comment ' . $issueCommentID . '  for issue was created';
+            $issue_comment_ID = R::store($issue_comment_obj);
+
+            $this->add_success_msg(_('comment was added'));
+            redirect('bug_tracker_issues/view/'.$issue_id, 'refresh');
+
         }
 
         $data['issue_id'] = $issue_id;
@@ -61,13 +61,16 @@ class Bug_Tracker_Issue_Comments extends CI_Controller {
 
             $issue_comment_obj->content = $_POST['comment_text'];
             $issue_comment_obj->datetime_lastedited = $now;
-//            $issueCommentObj->approved =  true;
-//            $issueCommentObj->visible =  true;
-//            $issueCommentObj->deleted =  false;
             $issueCommentID = R::store($issue_comment_obj);
+
+            $this->add_success_msg(_('comment was successful updated'));
+            redirect('bug_tracker_issues/view/'.$issue_comment_obj->issue_id, 'refresh');
+
 
         }
         $data['issue_comment_obj'] = $issue_comment_obj;
+
+
 
 
         /**

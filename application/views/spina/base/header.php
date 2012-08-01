@@ -41,7 +41,6 @@
 <script src="<?=STATICPATH?>js/__scripts/jquery/jquery.tipsy.js" type="text/javascript"></script>
 <script src="<?=STATICPATH?>js/__scripts/jquery/jquery.validate.js" type="text/javascript"></script>
 <script src="<?=STATICPATH?>js/__scripts/jquery/application.js" type="text/javascript"></script>
-<script src="<?=STATICPATH?>js/__scripts/jquery/jquery.autocomplete.js" type="text/javascript"></script>
 
 </head>
 <body<?=(strpos(uri_string(), 'auth/') === FALSE ? '' : ' id="login"')?>>

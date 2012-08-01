@@ -1410,3 +1410,10 @@ h6 {
 #rotatedevice {
     display: none;
 }
+
+#save_issue_details
+{
+    bottom: 44.5px;
+    position: relative;
+    right: -410px;
+}

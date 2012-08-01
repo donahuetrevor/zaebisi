@@ -7,8 +7,8 @@
     <div class="box-content">
         <form id="new_issue_form" method="post" action="">
             <div>
-                <p> <input type="text" name="q" id="query" />
-                    <textarea id="comment_text" name="comment_text" class="{validate:{required:true}}">Comment</textarea>
+                <p>
+                    <textarea id="comment_text" placeholder="Comment" name="comment_text" class="{validate:{required:true}}"></textarea>
                 </p>
             </div>
             <div class="clear"></div>

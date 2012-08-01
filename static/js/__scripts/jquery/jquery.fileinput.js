@@ -84,3 +84,4 @@ $.fn.customFileInput = function(){
 		
 	});
 };
+
